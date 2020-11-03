@@ -63,36 +63,56 @@ function outputMessage(message) {
   }
   
   const div = document.createElement('div');
+  const divusername = document.createElement('div');
   const msgcontainer = document.createElement('div');
   const pdate = document.createElement('p');
   const p = document.createElement('p');
   const para = document.createElement('p');
 
-  if (message.username.username == username){
-    div.classList.add('message-me');  
-    para.classList.add('text');
-    para.innerText = message.text;
-    div.appendChild(para);
-    msgcontainer.appendChild(div);
-    document.querySelector('.chat-messages').appendChild(div);
-    pdate.classList.add('text-date-me');
-    pdate.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR"))}</span>`;
-    div.appendChild(pdate);
-  }
-  else{
-    div.classList.add('message');
-    p.classList.add('meta');
-    p.innerText = message.username.username;
-    div.appendChild(p);
-    para.classList.add('text');
-    para.innerText = message.text;
-    div.appendChild(para);
-    msgcontainer.appendChild(div);
-    document.querySelector('.chat-messages').appendChild(div);
-    pdate.classList.add('text-date');
-    pdate.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR"))}</span>`;
-    div.appendChild(pdate);
-  }
+    if (message.username.username == username){
+
+      if(document.getElementsByClassName("node").length == 0 || document.getElementsByClassName("node")[document.getElementsByClassName("node").length-1].innerHTML != message.username.username){
+        divusername.classList.add('username-me');
+        p.classList.add('node');
+        p.innerText = message.username.username;
+        divusername.appendChild(p); 
+        msgcontainer.appendChild(divusername);
+        document.querySelector('.chat-messages').appendChild(divusername);
+
+        pdate.classList.add('text-date-me');
+        pdate.innerHTML += `${(" " + date.toLocaleString("fr-FR"))}`;
+        divusername.appendChild(pdate);
+      }
+
+      div.classList.add('message-me');  
+      para.classList.add('text');
+      para.innerText = message.text;
+      div.appendChild(para); 
+      msgcontainer.appendChild(div);
+      document.querySelector('.chat-messages').appendChild(div);
+    }
+    else{
+
+      if(document.getElementsByClassName("node").length == 0 || document.getElementsByClassName("node")[document.getElementsByClassName("node").length-1].innerHTML != message.username.username){
+        divusername.classList.add('username');
+        p.classList.add('node');
+        p.innerText = message.username.username;
+        divusername.appendChild(p); 
+        msgcontainer.appendChild(divusername);
+        document.querySelector('.chat-messages').appendChild(divusername);
+
+        pdate.classList.add('text-date');
+        pdate.innerHTML += `${(" " + date.toLocaleString("fr-FR"))}`;
+        divusername.appendChild(pdate);
+      }
+
+      div.classList.add('message');
+      para.classList.add('text');
+      para.innerText = message.text;
+      div.appendChild(para);
+      msgcontainer.appendChild(div);
+      document.querySelector('.chat-messages').appendChild(div);
+    }
 }
 
 function outputInfo(info){

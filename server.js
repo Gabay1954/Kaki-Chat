@@ -22,8 +22,6 @@ const database = require('./database.js');
 // dossier static
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botName = 'Kaki Bot';
-
 // client connect
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room }) => {
@@ -57,7 +55,7 @@ io.on('connection', socket => {
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
     msg.username = user;
-    msg.date = moment(new Date()).format('h:mm a');
+    msg.date = moment(new Date()).format('h:mm');
     io.to(user.room).emit('message', msg);
     msg.date = new Date()
     database.insertMessage(msg);

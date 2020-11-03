@@ -121,7 +121,7 @@ a.btn:hover{
 /* Chat Page */
 
 p.text{
-	margin: 0;
+	margin: 0 !important;
 }
 
 #msg{
@@ -226,7 +226,7 @@ header.chat-header{
 }
 
 .chat-messages .message {
-	width: auto !important;
+	width: max-content !important;
 	min-width: 50px;
 	max-width: 100%;
 	padding: 10px;
@@ -237,10 +237,10 @@ header.chat-header{
 }
 
 .chat-messages .message-me {
-	width: auto !important;
+	width: max-content !important;
 	min-width: 50px;
 	max-width: 100%;
-	margin-left: 50%;
+	margin-left: auto;
 	color: white;
 	padding: 10px;
 	margin-bottom: 15px;
@@ -250,17 +250,33 @@ header.chat-header{
 }
 
 .text-date{
-	text-align: right;
+	display: block;
+	text-align: left;
 	margin: 0;
 	font-size: 13px;
 	color: rgb(150, 150, 150);
 }
 
 .text-date-me{
+	display: block;
 	text-align: right;
 	margin: 0;
 	font-size: 13px;
-	color: rgb(235, 235, 235);
+	color: rgb(150, 150, 150);
+}
+
+.username{
+	text-align: left;
+	color: white;
+}
+
+.username-me{
+	text-align: right;
+	color: white;
+}
+
+p{
+	margin-bottom: 7px !important;
 }
 
 .chat-messages .message .meta {
