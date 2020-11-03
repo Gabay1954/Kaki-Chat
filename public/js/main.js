@@ -52,6 +52,8 @@ chatForm.addEventListener('submit', e => {
 function outputMessage(message) {
   var date = new Date();
   const div = document.createElement('div');
+  const msgcontainer = document.createElement('div');
+  div.classList.add('message-container');
   if (message.username == username){
     div.classList.add('message-me');
   }
@@ -67,6 +69,7 @@ function outputMessage(message) {
   para.classList.add('text');
   para.innerText = message.text;
   div.appendChild(para);
+  msgcontainer.appendChild(div);
   document.querySelector('.chat-messages').appendChild(div);
 }
 
