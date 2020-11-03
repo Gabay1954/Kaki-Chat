@@ -50,7 +50,6 @@ chatForm.addEventListener('submit', e => {
 
 // message de sorti vers le DOM
 function outputMessage(message) {
-  console.log(message);
   let date = new Date();
   if(message.date !== undefined){
     date = message.date;
