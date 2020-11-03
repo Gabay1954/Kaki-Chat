@@ -100,4 +100,4 @@ function outputUsers(users) {
     li.innerText = user.username;
     userList.appendChild(li);
   });
- }
+}
