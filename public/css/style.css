@@ -46,7 +46,6 @@ input#searchbar.border-0.rounded-pill{
     height:30px;
     font-size: 15px;
     text-align: left;
-
 }
 
 button#searchbtn.border-0.rounded-circle{
@@ -154,15 +153,6 @@ header.chat-header{
 	grid-template-columns: 3fr 1fr;
 	height: 690px;
 }
-
-@media only screen and (max-width: 991px){
-    .chat-main {
-		display: grid;
-		grid-template-columns: 3fr 1fr;
-		height: 500px;
-	}
-}
-
 
 .chat-sidebar {
 	background: #1a1a1a;
@@ -382,10 +372,22 @@ p{
 
 @media (max-width: 700px) {
 	.chat-main {
-		display: block;
+		grid-template-columns: 9fr;
+		height: 612px;
 	}
-
 	.chat-sidebar {
 		display: none;
+		grid-template-columns: 0fr;
+		height: 0px;
+	}
+	#a_logo_kaki{
+		margin-left: 8px; 
+	}
+	div#navbarSupportedContent.ml-auto.p-2.bd-highlight{
+		margin-right: 0px;
+	}
+	.chat-container{
+		border: none;
+		margin: 4px;
 	}
 }
