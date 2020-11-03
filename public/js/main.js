@@ -22,7 +22,6 @@ socket.on('roomUsers', ({ room, users }) => {
 // message du serv
 socket.on('message', message => {
   outputMessage(message);
-
   // actualisation du scroll
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
@@ -83,7 +82,7 @@ function outputMessage(message) {
   else{
     div.classList.add('message');
     p.classList.add('meta');
-    p.innerText = message.username;
+    p.innerText = message.username.username;
     div.appendChild(p);
     para.classList.add('text');
     para.innerText = message.text;
