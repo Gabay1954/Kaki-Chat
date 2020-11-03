@@ -34,7 +34,7 @@ io.on('connection', socket => {
     database.findAllMessages(room).then(
       result => {
         result.forEach(message => {
-        message.date = moment(message.date).format("hh:mm");
+        message.date = moment(message.date).format('h:mm a');
         socket.emit('message', message);
         });
         socket.emit('message', formatMessage(botName, 'Bienvenue sur Kaki'));
@@ -58,9 +58,11 @@ io.on('connection', socket => {
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
     msg.date = new Date();
-    msg.username = user;
-    io.to(user.room).emit('message', msg);
     database.insertMessage(msg);
+    msg.username = user;
+    msg.date = moment(message.date).format('h:mm a');
+    io.to(user.room).emit('message', msg);
+
   });
 
   // Quand utilisateurs se déconnectent
