@@ -52,7 +52,12 @@ chatForm.addEventListener('submit', e => {
 function outputMessage(message) {
   var date = new Date();
   const div = document.createElement('div');
-  div.classList.add('message');
+  if (message.username == username){
+    div.classList.add('message-me');
+  }
+  else{
+    div.classList.add('message');
+  }
   const p = document.createElement('p');
   p.classList.add('meta');
   p.innerText = message.username;
