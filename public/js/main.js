@@ -21,7 +21,6 @@ socket.on('roomUsers', ({ room, users }) => {
 
 // message du serv
 socket.on('message', message => {
-  console.log(message);
   outputMessage(message);
 
   // actualisation du scroll
@@ -33,16 +32,18 @@ chatForm.addEventListener('submit', e => {
   e.preventDefault();
 
   // obtenir message
-  let msg = e.target.elements.msg.value;
-  
-  msg = msg.trim();
-  
-  if (!msg){
+  let message = {
+    text : e.target.elements.msg.value.trim(),
+    username : username,
+    room : room,
+    date : new Date()
+  }
+  if (!message){
     return false;
   }
 
   // message serveur
-  socket.emit('chatMessage', msg);
+  socket.emit('chatMessage', message);
 
   e.target.elements.msg.value = '';
   e.target.elements.msg.focus();
@@ -50,11 +51,18 @@ chatForm.addEventListener('submit', e => {
 
 // message de sorti vers le DOM
 function outputMessage(message) {
-  var date = new Date();
+  let date = new Date();
+  if(message.date !== undefined){
+    date = message.date;
+  }
   const div = document.createElement('div');
   const msgcontainer = document.createElement('div');
   const pdate = document.createElement('p');
   const p = document.createElement('p');
+  p.classList.add('meta');
+  p.innerText = message.username.username;
+  p.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR") + "<br>")}</span>`;
+  div.appendChild(p);
   const para = document.createElement('p');
   div.classList.add('message-container');
   if (message.username == username){
