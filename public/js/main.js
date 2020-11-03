@@ -67,17 +67,9 @@ function outputMessage(message) {
   const pdate = document.createElement('p');
   const p = document.createElement('p');
   const para = document.createElement('p');
-  p.classList.add('meta');
-  p.innerText = message.username.username;
-  p.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR") + "<br>")}</span>`;
-  div.appendChild(p);
-  div.classList.add('message-container');
 
   if (message.username.username == username){
-    div.classList.add('message-me');
-    p.classList.add('meta');
-    p.innerText = message.username.username;
-    div.appendChild(p);
+    div.classList.add('message-me');  
     para.classList.add('text');
     para.innerText = message.text;
     div.appendChild(para);
