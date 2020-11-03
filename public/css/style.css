@@ -373,7 +373,7 @@ p{
 @media (max-width: 700px) {
 	.chat-main {
 		grid-template-columns: 9fr;
-		height: 612px;
+		height: 512px;
 	}
 	.chat-sidebar {
 		display: none;
