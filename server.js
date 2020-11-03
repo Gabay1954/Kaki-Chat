@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
+const moment = require('moment');
 const {
   userJoin,
   getCurrentUser,
@@ -33,6 +34,7 @@ io.on('connection', socket => {
     database.findAllMessages(room).then(
       result => {
         result.forEach(message => {
+        message.date = moment(message.date).format("hh:mm");
         socket.emit('message', message);
         });
         socket.emit('message', formatMessage(botName, 'Bienvenue sur Kaki'));
@@ -55,7 +57,6 @@ io.on('connection', socket => {
   // écoute chatMessage
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
-    console.log('on recoit un message: ', msg);
     msg.date = new Date();
     msg.username = user;
     io.to(user.room).emit('message', msg);
