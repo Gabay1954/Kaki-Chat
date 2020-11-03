@@ -34,17 +34,16 @@ io.on('connection', socket => {
     database.findAllMessages(room).then(
       result => {
         result.forEach(message => {
-        message.date = moment(message.date).format('h:mm a');
+        message.date = moment(message.date).format('h:mm');
         socket.emit('message', message);
         });
-        socket.emit('message', formatMessage(botName, 'Bienvenue sur Kaki'));
       })
 
-    // diffusion utilisateur se connecte
+    // Quand utilisateur se connecte
     socket.broadcast.to(user.room)
       .emit(
-        'message',
-        formatMessage(botName, `${user.username} à rejoint le chat`)
+        'info',
+        `${user.username} à rejoint le chat`
       );
 
     // Envoyer infos utilisateurs / rooms
@@ -64,13 +63,13 @@ io.on('connection', socket => {
     database.insertMessage(msg);
   });
 
-  // Quand utilisateurs se déconnectent
+  // Quand utilisateur se déconnecte
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
     if (user) {
       io.to(user.room).emit(
-        'message',
-        formatMessage(botName, `${user.username} à quitté le chat`)
+        'info',
+        `${user.username} à quitté le chat`
       );
 
       // envoyer info utilisateur et room

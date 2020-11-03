@@ -20,6 +20,13 @@ socket.on('roomUsers', ({ room, users }) => {
 });
 
 // message du serv
+socket.on('info', info => {
+  outputInfo(info);
+  // actualisation du scroll
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+// message du serv
 socket.on('message', message => {
   outputMessage(message);
   // actualisation du scroll
@@ -54,16 +61,18 @@ function outputMessage(message) {
   if(message.date !== undefined){
     date = message.date;
   }
+  
   const div = document.createElement('div');
   const msgcontainer = document.createElement('div');
   const pdate = document.createElement('p');
   const p = document.createElement('p');
+  const para = document.createElement('p');
   p.classList.add('meta');
   p.innerText = message.username.username;
   p.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR") + "<br>")}</span>`;
   div.appendChild(p);
-  const para = document.createElement('p');
   div.classList.add('message-container');
+
   if (message.username.username == username){
     div.classList.add('message-me');
     p.classList.add('meta');
@@ -92,6 +101,18 @@ function outputMessage(message) {
     pdate.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR"))}</span>`;
     div.appendChild(pdate);
   }
+}
+
+function outputInfo(info){
+  const msgcontainer = document.createElement('div');
+  const div = document.createElement('div');
+  const p = document.createElement('p');
+
+  p.classList.add('text-bot');
+  p.innerText = info;
+  div.appendChild(p);
+  msgcontainer.appendChild(div);
+  document.querySelector('.chat-messages').appendChild(div);
 }
 
 // aujouter nom au DOM

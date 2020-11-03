@@ -120,6 +120,10 @@ a.btn:hover{
 
 /* Chat Page */
 
+p.text{
+	margin: 0;
+}
+
 #msg{
 	border-radius: 10px;
 	border-style: none;
@@ -186,6 +190,14 @@ header.chat-header{
 	padding: 10px 0;
 }
 
+/*---------MESSAGES----------*/
+
+.text-bot{
+	font-size: 13px;
+	color: rgb(126, 126, 126);
+	text-align: center;
+}
+
 .chat-messages {
 	padding: 30px;
 	max-height: 700px;
@@ -218,7 +230,7 @@ header.chat-header{
 	padding: 10px;
 	margin-bottom: 15px;
 	background-color: #ffffff;
-	border-radius: 10px 10px 10px 0px;
+	border-radius: 20px 20px 20px 0px;
 	overflow-wrap: break-word;
 }
 
@@ -229,18 +241,20 @@ header.chat-header{
 	padding: 10px;
 	margin-bottom: 15px;
 	background-color:#F6810D;
-	border-radius: 10px 10px 0px 10px;
+	border-radius: 20px 20px 0px 20px;
 	overflow-wrap: break-word;
 }
 
 .text-date{
-	margin: 0px 0px 0px 63%;
+	text-align: right;
+	margin: 0;
 	font-size: 13px;
 	color: rgb(150, 150, 150);
 }
 
 .text-date-me{
-	margin: 0px 0px 0px 63%;
+	text-align: right;
+	margin: 0;
 	font-size: 13px;
 	color: rgb(235, 235, 235);
 }
