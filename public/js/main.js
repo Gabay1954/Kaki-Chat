@@ -51,6 +51,7 @@ chatForm.addEventListener('submit', e => {
 
 // message de sorti vers le DOM
 function outputMessage(message) {
+  console.log(message);
   let date = new Date();
   if(message.date !== undefined){
     date = message.date;
@@ -65,10 +66,10 @@ function outputMessage(message) {
   div.appendChild(p);
   const para = document.createElement('p');
   div.classList.add('message-container');
-  if (message.username == username){
+  if (message.username.username == username){
     div.classList.add('message-me');
     p.classList.add('meta');
-    p.innerText = message.username;
+    p.innerText = message.username.username;
     div.appendChild(p);
     para.classList.add('text');
     para.innerText = message.text;
