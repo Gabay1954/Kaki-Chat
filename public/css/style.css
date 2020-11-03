@@ -164,7 +164,7 @@ header.chat-header{
     height: 8px;
 }
 .chat-sidebar::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #131313;
 }
 .chat-sidebar::-webkit-scrollbar-thumb {
     background-color: #dfdfdf;
@@ -201,7 +201,7 @@ header.chat-header{
     height: 8px;
 }
 .chat-messages::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #131313;
 }
 .chat-messages::-webkit-scrollbar-thumb {
     background-color: #dfdfdf;
