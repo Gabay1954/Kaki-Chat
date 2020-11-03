@@ -233,6 +233,18 @@ header.chat-header{
 	overflow-wrap: break-word;
 }
 
+.text-date{
+	margin: 0px 0px 0px 63%;
+	font-size: 13px;
+	color: rgb(150, 150, 150);
+}
+
+.text-date-me{
+	margin: 0px 0px 0px 63%;
+	font-size: 13px;
+	color: rgb(235, 235, 235);
+}
+
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;

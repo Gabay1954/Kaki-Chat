@@ -53,24 +53,38 @@ function outputMessage(message) {
   var date = new Date();
   const div = document.createElement('div');
   const msgcontainer = document.createElement('div');
+  const pdate = document.createElement('p');
+  const p = document.createElement('p');
+  const para = document.createElement('p');
   div.classList.add('message-container');
   if (message.username == username){
     div.classList.add('message-me');
+    p.classList.add('meta');
+    p.innerText = message.username;
+    div.appendChild(p);
+    para.classList.add('text');
+    para.innerText = message.text;
+    div.appendChild(para);
+    msgcontainer.appendChild(div);
+    document.querySelector('.chat-messages').appendChild(div);
+    pdate.classList.add('text-date-me');
+    pdate.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR"))}</span>`;
+    div.appendChild(pdate);
   }
   else{
     div.classList.add('message');
+    p.classList.add('meta');
+    p.innerText = message.username;
+    div.appendChild(p);
+    para.classList.add('text');
+    para.innerText = message.text;
+    div.appendChild(para);
+    msgcontainer.appendChild(div);
+    document.querySelector('.chat-messages').appendChild(div);
+    pdate.classList.add('text-date');
+    pdate.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR"))}</span>`;
+    div.appendChild(pdate);
   }
-  const p = document.createElement('p');
-  p.classList.add('meta');
-  p.innerText = message.username;
-  p.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR") + "<br>")}</span>`;
-  div.appendChild(p);
-  const para = document.createElement('p');
-  para.classList.add('text');
-  para.innerText = message.text;
-  div.appendChild(para);
-  msgcontainer.appendChild(div);
-  document.querySelector('.chat-messages').appendChild(div);
 }
 
 // aujouter nom au DOM
