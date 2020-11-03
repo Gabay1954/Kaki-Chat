@@ -57,12 +57,11 @@ io.on('connection', socket => {
   // écoute chatMessage
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
-    msg.date = new Date();
-    database.insertMessage(msg);
     msg.username = user;
-    msg.date = moment(message.date).format('h:mm a');
+    msg.date = moment(new Date()).format('h:mm a');
     io.to(user.room).emit('message', msg);
-
+    msg.date = new Date()
+    database.insertMessage(msg);
   });
 
   // Quand utilisateurs se déconnectent
