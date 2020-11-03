@@ -226,7 +226,9 @@ header.chat-header{
 }
 
 .chat-messages .message {
-	width: 50% !important;
+	width: auto !important;
+	min-width: 50px;
+	max-width: 100%;
 	padding: 10px;
 	margin-bottom: 15px;
 	background-color: #ffffff;
@@ -235,7 +237,9 @@ header.chat-header{
 }
 
 .chat-messages .message-me {
-	width: 50% !important;
+	width: auto !important;
+	min-width: 50px;
+	max-width: 100%;
 	margin-left: 50%;
 	color: white;
 	padding: 10px;
