@@ -102,7 +102,7 @@ function outputMessage(message) {
         document.querySelector('.chat-messages').appendChild(divusername);
 
         pdate.classList.add('text-date');
-        pdate.innerHTML += `${(" " + date.toLocaleString("fr-FR"))}`;
+        pdate.innerHTML += `<span>${(" " + date.toLocaleString("fr-FR"))}</span>`;
         divusername.appendChild(pdate);
       }
 

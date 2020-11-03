@@ -155,6 +155,14 @@ header.chat-header{
 	height: 690px;
 }
 
+@media only screen and (max-width: 991px){
+    .chat-main {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		height: 500px;
+	}
+}
+
 
 .chat-sidebar {
 	background: #1a1a1a;
