@@ -119,7 +119,7 @@ a.btn:hover{
 
 /* Chat Page */
 
-p.text{
+p .text{
 	margin: 0 !important;
 }
 
@@ -225,40 +225,49 @@ header.chat-header{
 
 .chat-messages .message {
 	width: max-content !important;
-	min-width: 50px;
+	min-width: 10px;
 	max-width: 100%;
-	padding: 10px;
-	margin-bottom: 15px;
+	padding: 5px 10px 5px 10px;
+	margin-bottom: 3px;
 	background-color: #ffffff;
-	border-radius: 20px 20px 20px 0px;
+	border-radius: 30px 30px 30px 5px;
 	overflow-wrap: break-word;
 }
 
 .chat-messages .message-me {
+	text-align: right;
 	width: max-content !important;
-	min-width: 50px;
+	min-width: 10px;
 	max-width: 100%;
 	margin-left: auto;
 	color: white;
-	padding: 10px;
-	margin-bottom: 15px;
+	padding: 5px 10px 5px 10px;
+	margin-bottom: 3px;
 	background-color:#F6810D;
-	border-radius: 20px 20px 0px 20px;
+	border-radius: 30px 30px 5px 30px;
 	overflow-wrap: break-word;
 }
 
+p.text{
+	margin: 0 !important;
+}
+
+p.node{
+	display: inline-block;
+}
+
 .text-date{
-	display: block;
+	display: inline-block;
 	text-align: left;
-	margin: 0;
+	margin: 0px 0px 0px 5px;
 	font-size: 13px;
 	color: rgb(150, 150, 150);
 }
 
 .text-date-me{
-	display: block;
+	display: inline-block;
 	text-align: right;
-	margin: 0;
+	margin: 0px 0px 0px 5px;
 	font-size: 13px;
 	color: rgb(150, 150, 150);
 }
@@ -282,7 +291,6 @@ p{
 	font-weight: bold;
 	color: #1a1a1a;
 	opacity: 0.7;
-	margin-bottom: 7px;
 }
 
 .chat-messages .message .meta span {
