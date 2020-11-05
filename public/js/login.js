@@ -28,6 +28,7 @@ socket.on('canSignUp', (canSignUp) => {
     if(canSignUp){
         localStorage.setItem('username',document.getElementById('username').value);
         localStorage.setItem('canConnect', 'true');
+        localStorage.setItem('avatar', document.querySelector('input[name="avatar"]:checked').value)
         window.open("rooms.html", "_self");
     } else {
         window.alert("Utilisateur déjà existant");
@@ -35,10 +36,8 @@ socket.on('canSignUp', (canSignUp) => {
 });
 
 socket.on('canLogin', (loginDetails) => {
-    console.log("loginDetail : ", loginDetails)
     localStorage.setItem('username',loginDetails.username);
     localStorage.setItem('avatar',loginDetails.avatar);
-
     if(loginDetails.canLogin){
         localStorage.setItem('canConnect', 'true');
         window.open("rooms.html", "_self");

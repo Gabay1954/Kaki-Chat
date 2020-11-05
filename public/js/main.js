@@ -78,9 +78,11 @@ function outputMessage(message) {
         p.classList.add('node');
         p.innerText = message.username.username;
         divusername.appendChild(p);
+
         avatar.classList.add('avatar-chat-me')
         avatar.src="/img/"  + localStorage.getItem('avatar') + "-avatar.png";
         divusername.appendChild(avatar);
+
         msgcontainer.appendChild(divusername);
         document.querySelector('.chat-messages').appendChild(divusername);
         pdate.classList.add('text-date-me');
@@ -101,9 +103,11 @@ function outputMessage(message) {
         p.classList.add('node');
         p.innerText = message.username.username;
         divusername.appendChild(p); 
+
         avatar.classList.add('avatar-chat')
         avatar.src="/img/"  + message.username.avatar + "-avatar.png";
         divusername.appendChild(avatar);
+        
         msgcontainer.appendChild(divusername);
         document.querySelector('.chat-messages').appendChild(divusername);
         pdate.classList.add('text-date');
