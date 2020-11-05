@@ -22,26 +22,29 @@
 				<img id="logo_kaki_index" src="/img/logo_kaki.png">
 			</header>
 			<main class="join-main">
-				<h1 id="title-log">Connexion</h1>
+				<h1 id="title-log">Inscription</h1>
 				<form>
 					<div class="form-control">
 						<label for="username">Nom d'utilisateur</label>
 						<input type="text" id="username" placeholder="Entrer votre nom d'utilisateur">
 					</div>
 					<div class="form-control">
-						<label for="username">Mot de passe</label>
-						<input type="password" id="password" placeholder="Entrer votre mot de passe">
+						<label for="password">Mot de passe</label>
+						<input type="password" id="password01" placeholder="Entrer votre mot de passe">
 					</div>
-					<button type="button" class="btn" id="btn-rejoindre" onclick="getInfo()">Se connecter</button>
+					<div class="form-control">
+						<label for="password"> Confirmer votre mot de passe</label>
+						<input type="password" id="password02" placeholder="Entrer votre mot de passe">
+					</div>
+					<button type="button" class="btn" id="btn-rejoindre" onclick="inscription()">Créer le compte</button>
 				</form>
 				<div id="spacer">
 				</div>
 				<div id="linkcreatecompte">
-					<a>Vous n'avez pas de compte ?</a>
-					<a id="go-inscr" href="inscription.html" class="link">Inscrivez vous</a>
+					<a>Vous avez déjà un compte ?</a>
+					<a id="go-inscr" href="index.html" class="link">Connectez-vous</a>
 				</div>
 			</main>
-			<script>console.log(objPeople);</script>
 		</div>
 
 		<!-- <footer>

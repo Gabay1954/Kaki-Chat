@@ -13,8 +13,6 @@
 		<link rel="stylesheet" href="/css/style.css" />
 		<title>Kaki Chat Online</title>
 		<link rel="shortcut icon" type="image/png" href="/img/kaki_favicon.png"/>
-		<script src="https://kit.fontawesome.com/a076d05399.js"> </script>
-		<script src="/js/login.js"></script>
 	</head>
 	<body>
 		<div class="join-container">
@@ -22,26 +20,20 @@
 				<img id="logo_kaki_index" src="/img/logo_kaki.png">
 			</header>
 			<main class="join-main">
-				<h1 id="title-log">Connexion</h1>
-				<form>
+				<form action="chat.html">
 					<div class="form-control">
-						<label for="username">Nom d'utilisateur</label>
-						<input type="text" id="username" placeholder="Entrer votre nom d'utilisateur">
+						<label for="room">Salons</label>
+						<select name="room" id="room">
+							<option value="Test 01">Test 01</option>
+							<option value="Famille">Famille</option>
+							<option value="Bien-sûr">Bien-sûr</option>
+							<option value="Among Us">Among Us</option>							
+							<option value="Smash Bros">Smash Bros</option>							
+						</select>
 					</div>
-					<div class="form-control">
-						<label for="username">Mot de passe</label>
-						<input type="password" id="password" placeholder="Entrer votre mot de passe">
-					</div>
-					<button type="button" class="btn" id="btn-rejoindre" onclick="getInfo()">Se connecter</button>
+					<button type="submit" class="btn" id="btn-rejoindre">Rejoindre le salon</button>
 				</form>
-				<div id="spacer">
-				</div>
-				<div id="linkcreatecompte">
-					<a>Vous n'avez pas de compte ?</a>
-					<a id="go-inscr" href="inscription.html" class="link">Inscrivez vous</a>
-				</div>
 			</main>
-			<script>console.log(objPeople);</script>
 		</div>
 
 		<!-- <footer>
