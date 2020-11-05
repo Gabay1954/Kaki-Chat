@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="/css/style.css" />
 		<title>Kaki Chat Online</title>
 		<link rel="shortcut icon" type="image/png" href="/img/kaki_favicon.png"/>
+		<script src="/js/room.js"></script>
 	</head>
 	<body>
 		<div class="join-container">
@@ -20,7 +21,7 @@
 				<img id="logo_kaki_index" src="/img/logo_kaki.png">
 			</header>
 			<main class="join-main">
-				<form action="chat.html">
+				<form>
 					<div class="form-control">
 						<label for="room">Salons</label>
 						<select name="room" id="room">
@@ -31,7 +32,12 @@
 							<option value="Smash Bros">Smash Bros</option>							
 						</select>
 					</div>
-					<button type="submit" class="btn" id="btn-rejoindre">Rejoindre le salon</button>
+					<div>
+						<button type="button" class="btn" onclick="goToRoom()" id="btn-rejoindre">Rejoindre le salon</button>
+					</div>
+					<div>
+						<button type="button" class="btn" onclick="disconnect()" id="btn-rejoindre">Quitter le salon</button>
+					</div>				
 				</form>
 			</main>
 		</div>

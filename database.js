@@ -37,4 +37,14 @@ async function listDatabases(client) {
   databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
-module.exports = { getUserDetails, findAllMessages, listDatabases, insertMessage }
+async function insertUser(user) {
+  await client.connect();
+  return await client.db("tp-mongo").collection("users-gabriel").insertOne(user);
+}
+
+async function getUsers() {
+  await client.connect();
+  return await client.db("tp-mongo").collection("users-gabriel").find().toArray();
+}
+
+module.exports = { getUserDetails, findAllMessages, listDatabases, insertMessage, insertUser, getUsers }

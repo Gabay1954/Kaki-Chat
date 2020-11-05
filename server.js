@@ -2,7 +2,6 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-const formatMessage = require('./utils/messages');
 const moment = require('moment');
 const {
   userJoin,
@@ -10,6 +9,10 @@ const {
   userLeave,
   getRoomUsers
 } = require('./utils/users');
+
+//sécurité
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const app = express();
 const server = http.createServer(app);
@@ -76,6 +79,57 @@ io.on('connection', socket => {
         users: getRoomUsers(user.room)
       });
     }
+  });
+  
+  // Inscription 
+  socket.on('signup', loginUser => {
+    let canSignUp = true;
+    database.getUsers().then(
+      result => {
+        result.forEach(user => {
+          if(user.username.toLowerCase() == loginUser.username.toLowerCase()){
+            canSignUp = false;
+          }
+        });
+        
+        if(canSignUp){
+          bcrypt.genSalt(saltRounds, function(err, salt) {
+            bcrypt.hash(loginUser.password, salt, function(err, hash) {
+                loginUser.password = hash;
+          });
+        });
+          database.insertUser(loginUser);
+        }
+
+        io.to(socket.id).emit('canSignUp', canSignUp);
+        }
+    );
+    
+  });
+
+  // Connexion 
+  socket.on('login', loginUser => {
+    let canConnect = false;
+    
+    database.getUsers().then(
+      result => {
+          result.forEach(user => {
+            if(user.username.toLowerCase() == loginUser.username.toLowerCase() && bcrypt.compare(loginUser.password, user.password)){
+              canConnect = true;
+            }
+          });
+          if(canConnect){
+            io.to(socket.id).emit('canLogin', {
+              username : loginUser.username,
+              canLogin : true
+            });
+          } else {
+            io.to(socket.id).emit('canLogin', {
+              canLogin : false  
+            });
+          }
+      }
+    );
   });
 });
 

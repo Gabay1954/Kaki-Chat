@@ -1,54 +1,42 @@
-var objPeople = [
-	{
-		username: "O2",
-		password: "aude"
-    },
-    {
-		username: "alex",
-		password: "alex1234"
-	}
-]
+const socket = io();
 
 function getInfo() {
 	var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    var connected = false;
-
-	for(var i = 0; i < objPeople.length; i++) {
-		if(username == objPeople[i].username && password == objPeople[i].password) {
-            window.open("rooms.html", "_self");
-            connected = true;
-			return 
-        }
-    }
-    if(!connected){
-        window.alert("Erreur de connexion");
-    }
+    socket.emit('login', { "username" : username, "password" : password });
 }
 
 function inscription() {
     var username = document.getElementById('username').value;
     var password01 = document.getElementById('password01').value;
     var password02 = document.getElementById('password02').value;
-    var usernamefailed = "";
-    var connected = false;
-
-    for(var i = 0; i < objPeople.length; i++) {
-        if(username == objPeople[i].username){
-            usernamefailed = "gaksierlsiroslrodfqzdsfkdirkdrthkrjnd";
-        }
-        else{
-            usernamefailed = username;
-        }
+    if(password01 == password02){ 
+        socket.emit('signup', { "username" : username, "password" : password01 });
     }
-    if(password01 == password02 && username == usernamefailed){
-        objPeople.push({"username": username, "password": password01});
-        window.open("index.html", "_self");
-        connected = true;
-        return
+    else{
+        window.alert("Erreur : mots de passe différents");
     }
-    if(!connected){
-        window.alert("Erreur de création");
-    }
-console.log(objPeople);
 }
+
+
+socket.on('canSignUp', (canSignUp) => {
+    console.log(canSignUp)
+    if(canSignUp){
+        localStorage.setItem('username',document.getElementById('username').value);
+        localStorage.setItem('canConnect', 'true');
+        window.open("rooms.html", "_self");
+    } else {
+        window.alert("Utilisateur déjà existant");
+    }
+});
+
+socket.on('canLogin', (loginDetails) => {
+    localStorage.setItem('username',loginDetails.username);
+    localStorage.setItem('canConnect', 'true');
+
+    if(loginDetails.canLogin){
+        window.open("rooms.html", "_self");
+    } else {
+        window.alert("Erreur de connexion");
+    }
+});
