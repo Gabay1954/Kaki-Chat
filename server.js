@@ -36,6 +36,7 @@ io.on('connection', socket => {
       result => {
         result.forEach(message => {
         message.date = moment(message.date).format('h:mm');
+        console.log(message);
         socket.emit('message', message);
         });
       })
@@ -91,48 +92,56 @@ io.on('connection', socket => {
             canSignUp = false;
           }
         });
+        
         if(canSignUp){
           bcrypt.genSalt(saltRounds, function(err, salt) {
             bcrypt.hash(loginUser.password, salt, function(err, hash) {
                 loginUser.password = hash;
-                database.insertUser(loginUser);
           });
         });
+          database.insertUser(loginUser);
         }
-        io.to(socket.id).emit('canSignUp', canSignUp);  
-      }
+
+        io.to(socket.id).emit('canSignUp', canSignUp);
+        }
     );
     
   });
 
   // Connexion 
   socket.on('login', loginUser => {
-    let canConnect = false;
+    // let canConnect = false;
     let avatar = ""
-    database.getUsers().then(
+    let canLogin = false
+
+    let connect = database.getUsers().then(
       result => {
           result.forEach(user => {
-            if(user.username.toLowerCase() == loginUser.username.toLowerCase() && bcrypt.compare(loginUser.password, user.password)){
-              canConnect = true;
-              avatar = user.avatar
-            }
-            if(canConnect){
-              io.to(socket.id).emit('canLogin', {
-                username : loginUser.username,
-                avatar : avatar,
-                canLogin : true
-              });
-            } else {
-              io.to(socket.id).emit('canLogin', {
-                canLogin : false  
-              });
-            }
+            bcrypt.compare(loginUser.password, user.password).then(result => {
+              if(result){
+                if(user.username.toLowerCase() == loginUser.username.toLowerCase()){
+                  io.to(socket.id).emit('canLogin', {
+                    canLogin : true,
+                    username : loginUser.username,
+                    avatar : user.avatar
+                  });
+                  canLogin = true;
+                }
+              }
+            }); 
           });
-      }
-    );
+          // if(!canLogin){
+          //   io.to(socket.id).emit('canLogin', {
+          //     canLogin : false
+          //   });
+          // }
+      });
+    // connect.then(result => {
+    //   console.log('canLogin : ', result)
+    //   io.to(socket.id).emit('canLogin',answer);
+    // });
   });
 });
-
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => console.log(`serveur tourne sur le port ${PORT}`));

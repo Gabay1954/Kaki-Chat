@@ -7,7 +7,6 @@ function disconnect(){
     localStorage.setItem('username','');
     localStorage.setItem('canConnect', 'false');
     localStorage.setItem('avatar', '');
-    window.open(window.open("index.html", "_self"));
 }
 
 if(localStorage.getItem('canConnect') === 'false' || localStorage.getItem('canConnect') == undefined){

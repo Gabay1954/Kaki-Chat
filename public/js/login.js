@@ -35,13 +35,15 @@ socket.on('canSignUp', (canSignUp) => {
 });
 
 socket.on('canLogin', (loginDetails) => {
+    console.log("loginDetail : ", loginDetails)
     localStorage.setItem('username',loginDetails.username);
     localStorage.setItem('avatar',loginDetails.avatar);
-    localStorage.setItem('canConnect', 'true');
 
     if(loginDetails.canLogin){
+        localStorage.setItem('canConnect', 'true');
         window.open("rooms.html", "_self");
     } else {
+        localStorage.setItem('canConnect', 'false');
         window.alert("Erreur de connexion");
     }
 });
