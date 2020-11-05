@@ -6,6 +6,7 @@ function goToRoom() {
 function disconnect(){
     localStorage.setItem('username','');
     localStorage.setItem('canConnect', 'false');
+    localStorage.setItem('avatar', '');
     window.open(window.open("index.html", "_self"));
 }
 

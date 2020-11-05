@@ -91,18 +91,16 @@ io.on('connection', socket => {
             canSignUp = false;
           }
         });
-        
         if(canSignUp){
           bcrypt.genSalt(saltRounds, function(err, salt) {
             bcrypt.hash(loginUser.password, salt, function(err, hash) {
                 loginUser.password = hash;
+                database.insertUser(loginUser);
           });
         });
-          database.insertUser(loginUser);
         }
-
-        io.to(socket.id).emit('canSignUp', canSignUp);
-        }
+        io.to(socket.id).emit('canSignUp', canSignUp);  
+      }
     );
     
   });
@@ -118,18 +116,18 @@ io.on('connection', socket => {
               canConnect = true;
               avatar = user.avatar
             }
+            if(canConnect){
+              io.to(socket.id).emit('canLogin', {
+                username : loginUser.username,
+                avatar : avatar,
+                canLogin : true
+              });
+            } else {
+              io.to(socket.id).emit('canLogin', {
+                canLogin : false  
+              });
+            }
           });
-          if(canConnect){
-            io.to(socket.id).emit('canLogin', {
-              username : loginUser.username,
-              avatar : avatar,
-              canLogin : true
-            });
-          } else {
-            io.to(socket.id).emit('canLogin', {
-              canLogin : false  
-            });
-          }
       }
     );
   });
