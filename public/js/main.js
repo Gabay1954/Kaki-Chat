@@ -8,10 +8,11 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
+let avatar = localStorage.getItem('avatar');
 const socket = io();
 
 // rejoindre chat
-socket.emit('joinRoom', { username, room });
+socket.emit('joinRoom', { username, room, avatar});
 
 // room et utilisateur
 socket.on('roomUsers', ({ room, users }) => {
@@ -68,6 +69,7 @@ function outputMessage(message) {
   const pdate = document.createElement('p');
   const p = document.createElement('p');
   const para = document.createElement('p');
+  const avatar = document.createElement('img');
 
     if (message.username.username == username){
 
@@ -75,10 +77,12 @@ function outputMessage(message) {
         divusername.classList.add('username-me');
         p.classList.add('node');
         p.innerText = message.username.username;
-        divusername.appendChild(p); 
+        divusername.appendChild(p);
+        avatar.classList.add('avatar-chat-me')
+        avatar.src="/img/"  + localStorage.getItem('avatar') + "-avatar.png";
+        divusername.appendChild(avatar);
         msgcontainer.appendChild(divusername);
         document.querySelector('.chat-messages').appendChild(divusername);
-
         pdate.classList.add('text-date-me');
         pdate.innerHTML += `${(" " + date.toLocaleString("fr-FR"))}`;
         divusername.appendChild(pdate);
@@ -92,20 +96,21 @@ function outputMessage(message) {
       document.querySelector('.chat-messages').appendChild(div);
     }
     else{
-
+      console.log(message);
       if(document.getElementsByClassName("node").length == 0 || document.getElementsByClassName("node")[document.getElementsByClassName("node").length-1].innerHTML != message.username.username){
         divusername.classList.add('username');
         p.classList.add('node');
         p.innerText = message.username.username;
         divusername.appendChild(p); 
+        avatar.classList.add('avatar-chat')
+        avatar.src="/img/"  + message.username.avatar + "-avatar.png";
+        divusername.appendChild(avatar);
         msgcontainer.appendChild(divusername);
         document.querySelector('.chat-messages').appendChild(divusername);
-
         pdate.classList.add('text-date');
         pdate.innerHTML += `${(" " + date.toLocaleString("fr-FR"))}`;
         divusername.appendChild(pdate);
       }
-
       div.classList.add('message');
       para.classList.add('text');
       para.innerText = message.text;

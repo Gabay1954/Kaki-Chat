@@ -15,6 +15,28 @@
 	color: #d47e28;
 }
 
+#go-disconnect{
+	color: #F6810D;
+	background-color: none;
+	text-align: center !important;
+}
+
+#go-disconnect:hover {
+	color: #d47e28;
+}
+
+#go-quit-salon{
+	color: #F6810D;
+	background-color: none;
+	text-align: center !important;
+	padding-right: 12px;
+	text-decoration: none;
+}
+
+#go-quit-salon{
+	color: #d47e28;
+}
+
 #spacer{
 	margin: 30px 0px 30px 0px;
 	width: 100%;
@@ -27,7 +49,43 @@
 	text-align: center;
 }
 
+/*---------Rooms----------*/
+
+#icon-avatar-container{
+	margin-top: 25px;
+}
+
+.img-avatar{
+	width: 43.14px;
+	height: 43.14px;
+}
+
+.icon-avatar-div{
+	display: inline-block;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+  /* IMAGE STYLES */
+[type=radio] + img {
+	cursor: pointer;
+}
+
+  /* CHECKED STYLES */
+[type=radio]:checked + img {
+	outline: 2px solid #ffffff;
+	
+	
+}
+
 /*---------NAVBAR----------*/
+
 button.navbar-toggler{
     display: none;
 }
@@ -288,7 +346,7 @@ header.chat-header{
 	overflow-wrap: break-word;
 }
 
-p.text{
+p.text{ 
 	margin: 0 !important;
 }
 
@@ -474,4 +532,16 @@ p{
 	background-color: #131313;
 	color: white;
 	font-size: 13px;
+}
+
+.avatar-chat-me{
+	width: 25px;
+	height: 25px;
+	margin: 0px 0px 2px 5px;
+}
+
+.avatar-chat{
+	width: 25px;
+	height: 25px;
+	margin: 0px 0px 2px 5px;
 }

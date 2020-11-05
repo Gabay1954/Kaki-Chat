@@ -27,8 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // client connect
 io.on('connection', socket => {
-  socket.on('joinRoom', ({ username, room }) => {
-    const user = userJoin(socket.id, username, room);
+  socket.on('joinRoom', ({ username, room, avatar }) => {
+    const user = userJoin(socket.id, username, room, avatar);
     socket.join(user.room);
 
     // Bienvenue
@@ -36,6 +36,7 @@ io.on('connection', socket => {
       result => {
         result.forEach(message => {
         message.date = moment(message.date).format('h:mm');
+        console.log(message);
         socket.emit('message', message);
         });
       })
@@ -110,17 +111,19 @@ io.on('connection', socket => {
   // Connexion 
   socket.on('login', loginUser => {
     let canConnect = false;
-    
+    let avatar = ""
     database.getUsers().then(
       result => {
           result.forEach(user => {
             if(user.username.toLowerCase() == loginUser.username.toLowerCase() && bcrypt.compare(loginUser.password, user.password)){
               canConnect = true;
+              avatar = user.avatar
             }
           });
           if(canConnect){
             io.to(socket.id).emit('canLogin', {
               username : loginUser.username,
+              avatar : avatar,
               canLogin : true
             });
           } else {
