@@ -96,7 +96,6 @@ function outputMessage(message) {
       document.querySelector('.chat-messages').appendChild(div);
     }
     else{
-      console.log(message);
       if(document.getElementsByClassName("node").length == 0 || document.getElementsByClassName("node")[document.getElementsByClassName("node").length-1].innerHTML != message.username.username){
         divusername.classList.add('username');
         p.classList.add('node');

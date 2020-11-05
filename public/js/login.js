@@ -25,7 +25,6 @@ function inscription() {
 
 
 socket.on('canSignUp', (canSignUp) => {
-    console.log(canSignUp)
     if(canSignUp){
         localStorage.setItem('username',document.getElementById('username').value);
         localStorage.setItem('canConnect', 'true');
