@@ -36,7 +36,6 @@ io.on('connection', socket => {
       result => {
         result.forEach(message => {
         message.date = moment(message.date).format('h:mm');
-        console.log(message);
         socket.emit('message', message);
         });
       })
