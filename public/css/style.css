@@ -80,8 +80,26 @@
   /* CHECKED STYLES */
 [type=radio]:checked + img {
 	outline: 2px solid #ffffff;
-	
-	
+}
+
+.room-bienvenue{
+	display: inline-block;
+}
+
+.room-username-me{
+	display: inline-block;	
+	font-size: 20px;
+}
+
+.room-avatar-me{
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+}
+
+.room-avatar-chat-me{
+	width: 60px;
+	height: 60px;
 }
 
 /*---------NAVBAR----------*/
@@ -414,7 +432,7 @@ p{
 /* Join Page */
 
 #username{
-	border-radius: 10px;
+	border-radius: 5px;
 	border-style: none;
 	padding: 8px;
 	font-size: 16px;
@@ -425,7 +443,7 @@ p{
 	width: 420px;
 	height: 40px;
 	padding: 8px;
-	border-radius: 10px;
+	border-radius: 5px;
 	border-style: none;
 	font-size: 16px;
 }
@@ -439,7 +457,7 @@ p{
 }
 
 #room{
-	border-radius: 10px;
+	border-radius: 5px;
 	border-style: none;
 }
 
@@ -455,6 +473,10 @@ p{
 	background: #131313;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+}
+
+.join-main{
+	padding-top: 25px !important;
 }
 
 .main.join-main{
@@ -530,8 +552,6 @@ p{
 	height: 25px;
 	margin: 0px 0px 2px 5px;
 }
-
-
 
 #pcopyrigth{
 	margin: 0 !important;

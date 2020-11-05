@@ -23,7 +23,6 @@ function inscription() {
     }
 }
 
-
 socket.on('canSignUp', (canSignUp) => {
     if(canSignUp){
         localStorage.setItem('username',document.getElementById('username').value);
@@ -41,6 +40,7 @@ socket.on('canLogin', (loginDetails) => {
     if(loginDetails.canLogin){
         localStorage.setItem('canConnect', 'true');
         window.open("rooms.html", "_self");
+
     } else {
         localStorage.setItem('canConnect', 'false');
         window.alert("Erreur de connexion");
