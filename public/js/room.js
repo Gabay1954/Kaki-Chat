@@ -1,5 +1,4 @@
 function bienvenue() {
-    const msgcontainer = document.createElement('div');
     const divusername = document.createElement('div');
     const divavatar = document.createElement('div');
     const p = document.createElement('p');
